@@ -13,11 +13,10 @@ function SignupScreen() {
     try {
       const token = await createUser(email, password);
       authCtx.authenticate(token);
-      console.log(authCtx.token);
     } catch (error) {
       Alert.alert('Invalid input', 'invalid input,please try again later!');
+      setIsAuthenticating(false);
     }
-    setIsAuthenticating(false);
   }
   if (isAuthenticating) {
     return <LoadingOverlay message='Creating a user' />;

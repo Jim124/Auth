@@ -4,7 +4,6 @@ import AuthContent from '../components/Auth/AuthContent';
 import { login } from '../util/auth';
 import LoadingOverlay from '../components/ui/LoadingOverlay';
 import { AuthContext } from '../context/auth-context';
-
 function LoginScreen() {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const authCtx = useContext(AuthContext);
@@ -18,9 +17,8 @@ function LoginScreen() {
         'Authentication failed',
         'Could not log you in, please try again later!'
       );
+      setIsAuthenticating(false);
     }
-
-    setIsAuthenticating(false);
   }
   if (isAuthenticating) {
     return <LoadingOverlay message='Logging you in .....' />;
